@@ -1027,12 +1027,36 @@
     letter-spacing: 0.03em;
   }
 
-  @media (max-width: 900px) {
-    .cs-body { grid-template-columns: 1fr; }
-    .cs-col:first-child { border-right: none; }
-    .cs-header { padding: 2rem 1.5rem; }
-    .cs-block { padding: 1.5rem; }
+  .cs-status-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 0.5px solid var(--rule);
   }
+
+  .cs-status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--ink-mid);
+  }
+
+  .cs-status-item strong { font-weight: 500; }
+
+  .cs-status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .cs-done .cs-status-dot { background: var(--teal-light); }
+  .cs-done { color: var(--ink-mid); }
+  .cs-wip .cs-status-dot { background: var(--gold); }
+  .cs-wip { color: var(--ink-light); }
+
 </style>
 </head>
 <body>
@@ -1347,8 +1371,36 @@
               </div>
             </div>
           </div>
+          <div class="cs-block cs-results">
+            <div class="cs-block-label">04 — Results & Impact</div>
+            <ul class="cs-list">
+              <li>Tracks Go Digit's competitive positioning across <strong>28 states</strong> vs 9 peer insurers in a single drilldown view</li>
+              <li>Identifies <strong>underpenetrated geographies</strong> where GWP share lags industry average — actionable for regional strategy</li>
+              <li>Benchmarks <strong>YoY premium growth</strong> by LOB against HDFC Ergo, ICICI Lombard, Bajaj Allianz & others</li>
+              <li>Replaces manual PDF-hunting across IRDAI's portal with a <strong>unified, refresh-ready dataset</strong> updated each disclosure cycle</li>
+            </ul>
+            <div class="cs-status-bar">
+              <div class="cs-status-item cs-done">
+                <span class="cs-status-dot"></span>
+                <span>Data extraction — <strong>Complete</strong></span>
+              </div>
+              <div class="cs-status-item cs-done">
+                <span class="cs-status-dot"></span>
+                <span>Power Query modelling — <strong>Complete</strong></span>
+              </div>
+              <div class="cs-status-item cs-done">
+                <span class="cs-status-dot"></span>
+                <span>DAX measures — <strong>Complete</strong></span>
+              </div>
+              <div class="cs-status-item cs-wip">
+                <span class="cs-status-dot"></span>
+                <span>Dashboard visuals — <strong>In progress</strong></span>
+              </div>
+            </div>
+          </div>
+
           <div class="cs-block cs-skills-used">
-            <div class="cs-block-label">04 — Tools & Skills Demonstrated</div>
+            <div class="cs-block-label">05 — Tools & Skills Demonstrated</div>
             <div class="cs-chip-wrap">
               <span class="cs-chip">Power BI</span>
               <span class="cs-chip">DAX Measures</span>
