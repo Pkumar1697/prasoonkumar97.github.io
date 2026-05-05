@@ -864,6 +864,43 @@
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .achievement-row { grid-template-columns: 1fr 1fr; }
     .container { padding: 0 1.5rem; }
+
+    /* Case study mobile fixes */
+    h3.cs-title { font-size: 1.2rem; }
+    .cs-meta-row { flex-direction: column; gap: 0.4rem; }
+
+    /* Section padding mobile */
+    #about, #experience, #skills, #casestudy,
+    #achievements, #education, #contact { padding: 4rem 0; }
+
+    /* Skills grid single col on very small */
+    h2.section-title { font-size: 1.6rem; }
+    .exp-meta { padding-bottom: 0; }
+    h3.exp-role { font-size: 1.2rem; }
+
+    /* Achievement row mobile */
+    .ach-cell { padding: 1.2rem; }
+    .ach-num { font-size: 2rem; }
+
+    /* Contact mobile */
+    .contact-intro h2 { font-size: 2rem; }
+
+    /* Footer mobile */
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+
+    /* Hero mobile */
+    h1.hero-name { font-size: 3.2rem; }
+    .hero-pills { gap: 0.4rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 480px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .achievement-row { grid-template-columns: 1fr 1fr; }
+    .cs-outcomes { grid-template-columns: 1fr 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .hero-pills .pill { font-size: 0.65rem; padding: 0.25rem 0.6rem; }
+    .cs-chip-wrap .cs-chip { font-size: 0.62rem; }
   }
 
   /* ── CASE STUDY ── */
@@ -916,28 +953,70 @@
     font-family: var(--mono);
   }
 
-  .cs-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  /* Stats horizontal scroll strip */
+  .cs-stats-strip {
+    display: flex;
+    overflow-x: auto;
     gap: 0;
+    border-bottom: 0.5px solid var(--rule);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .cs-stats-strip::-webkit-scrollbar { display: none; }
+
+  .cs-stat-card {
+    flex: 0 0 160px;
+    padding: 1.5rem 1.2rem;
+    border-right: 0.5px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: var(--ink);
+    transition: background 0.2s;
+  }
+  .cs-stat-card:hover { background: rgba(184,134,11,0.15); }
+
+  .cs-stat-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
   }
 
-  .cs-col {
+  .cs-stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+
+  /* Vertical blocks */
+  .cs-blocks-vertical {
     display: flex;
     flex-direction: column;
   }
 
-  .cs-col:first-child {
-    border-right: 0.5px solid var(--rule);
-  }
-
-  .cs-block {
+  .cs-vblock {
     padding: 2rem 2.5rem;
     border-bottom: 0.5px solid var(--rule);
-    flex: 1;
   }
 
-  .cs-block:last-child { border-bottom: none; }
+  .cs-vblock-last { border-bottom: none; }
+
+  .cs-vblock p {
+    font-size: 0.92rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin-bottom: 0.8rem;
+  }
+
+  .cs-vblock p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 900px) {
+    .cs-vblock { padding: 1.5rem; }
+    .cs-stat-card { flex: 0 0 140px; padding: 1.2rem 1rem; }
+    .cs-stat-num { font-size: 1.6rem; }
+  }
 
   .cs-block-label {
     font-family: var(--mono);
@@ -948,13 +1027,6 @@
     margin-bottom: 1rem;
   }
 
-  .cs-problem p, .cs-approach p {
-    font-size: 0.9rem;
-    color: var(--ink-mid);
-    line-height: 1.75;
-  }
-
-  .cs-list {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -978,36 +1050,6 @@
   }
 
   .cs-list li strong { color: var(--ink); font-weight: 500; }
-
-  .cs-outcomes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--rule);
-    border: 0.5px solid var(--rule);
-  }
-
-  .cs-outcome-item {
-    background: var(--paper-card);
-    padding: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-
-  .cs-outcome-num {
-    font-family: var(--serif);
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .cs-outcome-label {
-    font-size: 0.72rem;
-    color: var(--ink-light);
-    line-height: 1.4;
-  }
 
   .cs-chip-wrap {
     display: flex;
@@ -1321,9 +1363,11 @@
     </div>
 
     <div class="cs-wrapper fade-in">
+
+      <!-- Header -->
       <div class="cs-header">
         <div class="cs-tag">Power BI · DAX · Power Query · Excel · IRDAI Regulatory Data</div>
-        <h3 class="cs-title">Geographical Distribution of Business — <em>IRDAI NL-34 Insurance Dashboard</em></h3>
+        <h3 class="cs-title">Geographical Distribution of Business —<br><em>IRDAI NL-34 Insurance Dashboard</em></h3>
         <div class="cs-meta-row">
           <span class="cs-meta-item">🏦 Insurance · Regulatory Analytics</span>
           <span class="cs-meta-item">📅 FY2022-23 → FY2025-26</span>
@@ -1331,92 +1375,101 @@
           <span class="cs-meta-item">🏢 10 Insurers · 40 Data Files</span>
         </div>
       </div>
-      <div class="cs-body">
-        <div class="cs-col">
-          <div class="cs-block cs-problem">
-            <div class="cs-block-label">01 — The Problem</div>
-            <p>IRDAI publishes NL-34 regulatory disclosures — state-wise premium data for every general insurer in India — as raw PDFs scattered across multiple years and companies. There was no consolidated view to benchmark insurers, track market share shifts by geography, or identify which states were driving growth.</p>
-            <p style="margin-top:0.8rem;">Leadership had no single analytical lens on how ₹2L+ Cr of industry GWP was distributed across states, lines of business, and competitors over time.</p>
-          </div>
-          <div class="cs-block cs-approach">
-            <div class="cs-block-label">02 — The Approach</div>
-            <ul class="cs-list">
-              <li>Manually extracted and structured data from <strong>40 NL-34 PDF files</strong> — 10 insurers × 4 financial years</li>
-              <li>Built a <strong>consolidated master dataset</strong> in Power Query with standardised schema across all insurers and periods</li>
-              <li>Designed <strong>DAX measures</strong> for YoY growth, market share %, and peer benchmarking calculations</li>
-              <li>Created drilldown-enabled <strong>state-wise premium maps</strong>, insurer trend charts, and LOB-level breakdowns</li>
-              <li>Benchmarked Go Digit, HDFC Ergo, ICICI Lombard, Bajaj Allianz & 6 others side by side</li>
-            </ul>
-          </div>
-        </div>
-        <div class="cs-col">
-          <div class="cs-block cs-outcome">
-            <div class="cs-block-label">03 — The Outcome</div>
-            <div class="cs-outcomes">
-              <div class="cs-outcome-item">
-                <span class="cs-outcome-num">40</span>
-                <span class="cs-outcome-label">NL-34 files extracted, cleaned & unified into one master dataset</span>
-              </div>
-              <div class="cs-outcome-item">
-                <span class="cs-outcome-num">10</span>
-                <span class="cs-outcome-label">Major insurers benchmarked across states & lines of business</span>
-              </div>
-              <div class="cs-outcome-item">
-                <span class="cs-outcome-num">4 yrs</span>
-                <span class="cs-outcome-label">Historical trend coverage — FY2022-23 through FY2025-26</span>
-              </div>
-              <div class="cs-outcome-item">
-                <span class="cs-outcome-num">₹2L+ Cr</span>
-                <span class="cs-outcome-label">Industry GWP data made analytically queryable via Power BI</span>
-              </div>
-            </div>
-          </div>
-          <div class="cs-block cs-results">
-            <div class="cs-block-label">04 — Results & Impact</div>
-            <ul class="cs-list">
-              <li>Tracks Go Digit's competitive positioning across <strong>28 states</strong> vs 9 peer insurers in a single drilldown view</li>
-              <li>Identifies <strong>underpenetrated geographies</strong> where GWP share lags industry average — actionable for regional strategy</li>
-              <li>Benchmarks <strong>YoY premium growth</strong> by LOB against HDFC Ergo, ICICI Lombard, Bajaj Allianz & others</li>
-              <li>Replaces manual PDF-hunting across IRDAI's portal with a <strong>unified, refresh-ready dataset</strong> updated each disclosure cycle</li>
-            </ul>
-            <div class="cs-status-bar">
-              <div class="cs-status-item cs-done">
-                <span class="cs-status-dot"></span>
-                <span>Data extraction — <strong>Complete</strong></span>
-              </div>
-              <div class="cs-status-item cs-done">
-                <span class="cs-status-dot"></span>
-                <span>Power Query modelling — <strong>Complete</strong></span>
-              </div>
-              <div class="cs-status-item cs-done">
-                <span class="cs-status-dot"></span>
-                <span>DAX measures — <strong>Complete</strong></span>
-              </div>
-              <div class="cs-status-item cs-wip">
-                <span class="cs-status-dot"></span>
-                <span>Dashboard visuals — <strong>In progress</strong></span>
-              </div>
-            </div>
-          </div>
 
-          <div class="cs-block cs-skills-used">
-            <div class="cs-block-label">05 — Tools & Skills Demonstrated</div>
-            <div class="cs-chip-wrap">
-              <span class="cs-chip">Power BI</span>
-              <span class="cs-chip">DAX Measures</span>
-              <span class="cs-chip">Power Query</span>
-              <span class="cs-chip">Excel</span>
-              <span class="cs-chip">Data Extraction</span>
-              <span class="cs-chip">Data Cleaning</span>
-              <span class="cs-chip">Schema Design</span>
-              <span class="cs-chip">Peer Benchmarking</span>
-              <span class="cs-chip">Insurance Domain</span>
-              <span class="cs-chip">IRDAI Regulatory Data</span>
-              <span class="cs-chip">GWP Analysis</span>
-              <span class="cs-chip">State-wise Mapping</span>
+      <!-- Horizontal scroll stats strip -->
+      <div class="cs-stats-strip">
+        <div class="cs-stat-card">
+          <span class="cs-stat-num">40</span>
+          <span class="cs-stat-label">NL-34 files extracted & unified</span>
+        </div>
+        <div class="cs-stat-card">
+          <span class="cs-stat-num">10</span>
+          <span class="cs-stat-label">Insurers benchmarked side by side</span>
+        </div>
+        <div class="cs-stat-card">
+          <span class="cs-stat-num">4 yrs</span>
+          <span class="cs-stat-label">FY2022–23 through FY2025–26</span>
+        </div>
+        <div class="cs-stat-card">
+          <span class="cs-stat-num">₹2L+Cr</span>
+          <span class="cs-stat-label">Industry GWP made queryable</span>
+        </div>
+        <div class="cs-stat-card">
+          <span class="cs-stat-num">28</span>
+          <span class="cs-stat-label">States tracked for positioning</span>
+        </div>
+      </div>
+
+      <!-- Vertical blocks -->
+      <div class="cs-blocks-vertical">
+
+        <div class="cs-vblock">
+          <div class="cs-block-label">01 — The Problem</div>
+          <p>IRDAI publishes NL-34 regulatory disclosures — state-wise premium data for every general insurer in India — as raw PDFs scattered across multiple years and companies. There was no consolidated view to benchmark insurers, track market share shifts by geography, or identify which states were driving growth.</p>
+          <p>Leadership had no single analytical lens on how ₹2L+ Cr of industry GWP was distributed across states, lines of business, and competitors over time.</p>
+        </div>
+
+        <div class="cs-vblock">
+          <div class="cs-block-label">02 — The Approach</div>
+          <ul class="cs-list">
+            <li>Manually extracted and structured data from <strong>40 NL-34 PDF files</strong> — 10 insurers × 4 financial years</li>
+            <li>Built a <strong>consolidated master dataset</strong> in Power Query with standardised schema across all insurers and periods</li>
+            <li>Designed <strong>DAX measures</strong> for YoY growth, market share %, and peer benchmarking calculations</li>
+            <li>Created drilldown-enabled <strong>state-wise premium maps</strong>, insurer trend charts, and LOB-level breakdowns</li>
+            <li>Benchmarked Go Digit, HDFC Ergo, ICICI Lombard, Bajaj Allianz & 6 others side by side</li>
+          </ul>
+        </div>
+
+        <div class="cs-vblock">
+          <div class="cs-block-label">03 — Results & Impact</div>
+          <ul class="cs-list">
+            <li>Tracks Go Digit's competitive positioning across <strong>28 states</strong> vs 9 peer insurers in a single drilldown view</li>
+            <li>Identifies <strong>underpenetrated geographies</strong> where GWP share lags industry average — actionable for regional strategy</li>
+            <li>Benchmarks <strong>YoY premium growth</strong> by LOB against HDFC Ergo, ICICI Lombard, Bajaj Allianz & others</li>
+            <li>Replaces manual PDF-hunting across IRDAI's portal with a <strong>unified, refresh-ready dataset</strong> updated each disclosure cycle</li>
+          </ul>
+        </div>
+
+        <div class="cs-vblock">
+          <div class="cs-block-label">04 — Build Status</div>
+          <div class="cs-status-bar">
+            <div class="cs-status-item cs-done">
+              <span class="cs-status-dot"></span>
+              <span>Data extraction — <strong>Complete</strong></span>
+            </div>
+            <div class="cs-status-item cs-done">
+              <span class="cs-status-dot"></span>
+              <span>Power Query modelling — <strong>Complete</strong></span>
+            </div>
+            <div class="cs-status-item cs-done">
+              <span class="cs-status-dot"></span>
+              <span>DAX measures — <strong>Complete</strong></span>
+            </div>
+            <div class="cs-status-item cs-wip">
+              <span class="cs-status-dot"></span>
+              <span>Dashboard visuals — <strong>Finalising</strong></span>
             </div>
           </div>
         </div>
+
+        <div class="cs-vblock cs-vblock-last">
+          <div class="cs-block-label">05 — Tools & Skills</div>
+          <div class="cs-chip-wrap">
+            <span class="cs-chip">Power BI</span>
+            <span class="cs-chip">DAX Measures</span>
+            <span class="cs-chip">Power Query</span>
+            <span class="cs-chip">Excel</span>
+            <span class="cs-chip">Data Extraction</span>
+            <span class="cs-chip">Data Cleaning</span>
+            <span class="cs-chip">Schema Design</span>
+            <span class="cs-chip">Peer Benchmarking</span>
+            <span class="cs-chip">Insurance Domain</span>
+            <span class="cs-chip">IRDAI Regulatory Data</span>
+            <span class="cs-chip">GWP Analysis</span>
+            <span class="cs-chip">State-wise Mapping</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
