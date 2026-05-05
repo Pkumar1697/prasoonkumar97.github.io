@@ -990,6 +990,37 @@
     line-height: 1.4;
   }
 
+  .cs-stat-context {
+    flex: 0 0 220px;
+    background: var(--gold);
+    border-right: none;
+    justify-content: center;
+  }
+
+  .cs-stat-context:hover { background: var(--gold-light); }
+
+  .cs-stat-context-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(26,26,24,0.6);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .cs-stat-context-text {
+    font-size: 0.78rem;
+    color: var(--ink);
+    line-height: 1.55;
+    display: block;
+  }
+
+  .cs-stat-context-text strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
   /* Vertical blocks */
   .cs-blocks-vertical {
     display: flex;
@@ -1397,6 +1428,10 @@
         <div class="cs-stat-card">
           <span class="cs-stat-num">28</span>
           <span class="cs-stat-label">States tracked for positioning</span>
+        </div>
+        <div class="cs-stat-card cs-stat-context">
+          <span class="cs-stat-context-label">Why It Matters</span>
+          <span class="cs-stat-context-text">India's general insurance market has <strong>no single public tool</strong> to compare insurer GWP by state. This dashboard fills that gap using IRDAI's own data — turning weeks of PDF research into a single drilldown view.</span>
         </div>
       </div>
 
