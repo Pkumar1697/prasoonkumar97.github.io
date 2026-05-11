@@ -387,6 +387,12 @@
     pointer-events: none;
   }
 
+  @media (max-width: 900px) {
+    .about-photo-wrap { display: block; text-align: center; }
+    .about-photo { max-width: 260px; margin: 0 auto; }
+    .about-photo-wrap::after { display: none; }
+  }
+
   /* ── ABOUT ── */
   #about {
     padding: 7rem 0;
