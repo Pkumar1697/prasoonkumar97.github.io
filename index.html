@@ -756,6 +756,18 @@
 
   .cert-item:hover { border-color: var(--gold); color: var(--gold-light); }
 
+  .cert-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+
+  .cert-link:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    background: rgba(184, 134, 11, 0.08);
+  }
+
   .cert-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
@@ -1436,8 +1448,9 @@
         <h4 class="skill-card-title">Certifications</h4>
         <div class="skill-tags">
           <span class="skill-tag primary">Bloomberg Market Concepts</span>
-          <span class="skill-tag primary">NISM Certified</span>
-          <span class="skill-tag">CRISIL Certified Wealth Manager</span>
+              <span class="skill-tag primary">Bloomberg ESG</span>
+              <span class="skill-tag primary">NISM Certified</span>
+              <span class="skill-tag">CRISIL Certified Wealth Manager</span>
         </div>
       </div>
     </div>
@@ -1619,9 +1632,15 @@
       </div>
     </div>
     <div class="cert-strip fade-in">
-      <div class="cert-item"><span class="cert-dot"></span>Bloomberg Market Concepts (BMC)</div>
-      <div class="cert-item"><span class="cert-dot"></span>NISM Certified Wealth Manager</div>
-      <div class="cert-item"><span class="cert-dot"></span>CRISIL Certified Wealth Manager</div>
+      <a href="https://drive.google.com/file/d/1D3vV6KRQfqoWgPC6NzLnv5ReVnOnVUDc/view?usp=sharing" target="_blank" class="cert-item cert-link">
+        <span class="cert-dot"></span>Bloomberg Market Concepts (BMC) ↗
+      </a>
+      <a href="https://drive.google.com/file/d/15y5hLwukThg6XNIVMWWTwSJBzPmxRIRN/view?usp=sharing" target="_blank" class="cert-item cert-link">
+        <span class="cert-dot"></span>Bloomberg ESG ↗
+      </a>
+      <a href="https://drive.google.com/file/d/1wUfHjRnfbQ63f-Jcp7UZ-rtdwwhJV7YF/view?usp=sharing" target="_blank" class="cert-item cert-link">
+        <span class="cert-dot"></span>NISM & CRISIL Certified Wealth Manager ↗
+      </a>
     </div>
   </div>
 </section>
